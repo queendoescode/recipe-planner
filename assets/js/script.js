@@ -5,10 +5,24 @@ var descriptionEl = document.querySelector("#description");
 
 function activateSearchBtn() {
 
+    var childNodes = descriptionEl.childNodes;
+    for (var i = childNodes.length - 1; i >= 0; i--) {
+      var childNode = childNodes[i];
+      descriptionEl.removeChild(childNode);
+    }
+    var childNodes = resultEl.childNodes;
+    for (var i = childNodes.length - 1; i >= 0; i--) {
+      var childNode = childNodes[i];
+      resultEl.removeChild(childNode);
+    }
+    
+
     var userInput = userInputEl.value;
+    // userInputEl.value = " ";
+
     console.log(userInput);
     var baseUrl = 'https://api.spoonacular.com/recipes/complexSearch';
-    var finalUrl = `${baseUrl}?query=${encodeURIComponent(userInput)}&apiKey=4b9fe343ff764f7494d88321c248a6ee`;
+    var finalUrl = `${baseUrl}?query=${encodeURIComponent(userInput)}&apiKey=96dedef6d4244eee817b8f5cc4b3179f`;
     fetch(finalUrl, {
         method: 'GET',
         credentials: 'same-origin',
@@ -34,9 +48,16 @@ function activateSearchBtn() {
                 resultEl.appendChild(tag);
             }
         });
+        
 }
 
 resultEl.addEventListener("click", function (event) {
+    var childNodes = descriptionEl.childNodes;
+    
+    for (var i = childNodes.length - 1; i >= 0; i--) {
+      var childNode = childNodes[i];
+      descriptionEl.removeChild(childNode);
+    }
     
     var element = event.target;
 
@@ -44,7 +65,7 @@ resultEl.addEventListener("click", function (event) {
         var inputId = element.getAttribute("data-id");
         console.log(inputId);
     }
-    fetch(`https://api.spoonacular.com/recipes/${inputId}/information?apiKey=4b9fe343ff764f7494d88321c248a6ee`, {
+    fetch(`https://api.spoonacular.com/recipes/${inputId}/information?apiKey=96dedef6d4244eee817b8f5cc4b3179f`, {
         method: 'GET',
         credentials: 'same-origin',
         redirect: 'follow',
@@ -62,7 +83,7 @@ resultEl.addEventListener("click", function (event) {
                 descriptionEl.appendChild(ingreLine);
             }
         });
-    fetch(`https://api.spoonacular.com/recipes/${inputId}/analyzedInstructions?apiKey=4b9fe343ff764f7494d88321c248a6ee`, {
+    fetch(`https://api.spoonacular.com/recipes/${inputId}/analyzedInstructions?apiKey=96dedef6d4244eee817b8f5cc4b3179f`, {
         method: 'GET',
         credentials: 'same-origin',
         redirect: 'follow',
