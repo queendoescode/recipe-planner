@@ -1,30 +1,34 @@
 
-
 var searchBtnEl = document.querySelector(".search-btn");
 var userInputEl = document.querySelector("#user-input");
 var resultEl = document.querySelector("#result");
 var descriptionEl = document.querySelector("#description");
+var britishBreakfastEl = document.querySelector("#british-brkfst");
+var breakfastEl = document.querySelector("#dropdown1");
+var mainCourseEl = document.querySelector("#dropdown2");
+var sideDishEl = document.querySelector("#dropdown3");
+var dessertEl = document.querySelector("#dropdown4");
 
 function activateSearchBtn() {
 
     var childNodes = descriptionEl.childNodes;
     for (var i = childNodes.length - 1; i >= 0; i--) {
-      var childNode = childNodes[i];
-      descriptionEl.removeChild(childNode);
+        var childNode = childNodes[i];
+        descriptionEl.removeChild(childNode);
     }
     var childNodes = resultEl.childNodes;
     for (var i = childNodes.length - 1; i >= 0; i--) {
-      var childNode = childNodes[i];
-      resultEl.removeChild(childNode);
+        var childNode = childNodes[i];
+        resultEl.removeChild(childNode);
     }
-    
+
 
     var userInput = userInputEl.value;
     // userInputEl.value = " ";
 
     console.log(userInput);
     var baseUrl = 'https://api.spoonacular.com/recipes/complexSearch';
-    var finalUrl = `${baseUrl}?query=${encodeURIComponent(userInput)}&apiKey=8229129838cf4de5b38ad3b9facd00f8`;
+    var finalUrl = `${baseUrl}?query=${encodeURIComponent(userInput)}&apiKey=4b9fe343ff764f7494d88321c248a6ee`;
     fetch(finalUrl, {
         method: 'GET',
         credentials: 'same-origin',
@@ -50,24 +54,24 @@ function activateSearchBtn() {
                 resultEl.appendChild(tag);
             }
         });
-        
+
 }
 
 resultEl.addEventListener("click", function (event) {
     var childNodes = descriptionEl.childNodes;
-    
+
     for (var i = childNodes.length - 1; i >= 0; i--) {
-      var childNode = childNodes[i];
-      descriptionEl.removeChild(childNode);
+        var childNode = childNodes[i];
+        descriptionEl.removeChild(childNode);
     }
-    
+
     var element = event.target;
 
     if (element.matches("a") === true) {
         var inputId = element.getAttribute("data-id");
         console.log(inputId);
     }
-    fetch(`https://api.spoonacular.com/recipes/${inputId}/information?apiKey=8229129838cf4de5b38ad3b9facd00f8`, {
+    fetch(`https://api.spoonacular.com/recipes/${inputId}/information?apiKey=4b9fe343ff764f7494d88321c248a6ee`, {
         method: 'GET',
         credentials: 'same-origin',
         redirect: 'follow',
@@ -81,7 +85,7 @@ resultEl.addEventListener("click", function (event) {
 
             computeCalories(data);
         });
-    fetch(`https://api.spoonacular.com/recipes/${inputId}/analyzedInstructions?apiKey=8229129838cf4de5b38ad3b9facd00f8`, {
+    fetch(`https://api.spoonacular.com/recipes/${inputId}/analyzedInstructions?apiKey=4b9fe343ff764f7494d88321c248a6ee`, {
         method: 'GET',
         credentials: 'same-origin',
         redirect: 'follow',
@@ -100,8 +104,6 @@ resultEl.addEventListener("click", function (event) {
         });
 
 });
-
-
 
 searchBtnEl.addEventListener('click', activateSearchBtn);
 
@@ -129,34 +131,34 @@ function getNutritionPromise(item, caloriesHeading) {
         queryText = `1 oz ${item.originalName}`;
     }
 
-    queryText = queryText.replace(" ml", "ml").replace(" gr.", "g"); 
+    queryText = queryText.replace(" ml", "ml").replace(" gr.", "g");
 
     return fetch(`${calorieNinjasUrl}?query=${queryText}`, {
         method: 'GET',
         credentials: 'same-origin',
-        redirect: 'follow', 
+        redirect: 'follow',
         headers: {
             "X-Api-Key": calorieNinjasKey
         }
     })
-    .then(function (response) {
-        return response.json();
-    })
-    .then(function (data) {
-        var calories = 0;
-        if (data.items.length > 0) {
-            // Some ingredients are "to taste" or do not have a quantity; skip these in our total.
-            // (e.g. "salt and pepper to taste")
-            if (item.unit !== "servings" && item.unit !== "serving") {
-                calories = data.items[0].calories * fraction;
-                totalCalories = totalCalories + calories;
-            }
+        .then(function (response) {
+            return response.json();
+        })
+        .then(function (data) {
+            var calories = 0;
+            if (data.items.length > 0) {
+                // Some ingredients are "to taste" or do not have a quantity; skip these in our total.
+                // (e.g. "salt and pepper to taste")
+                if (item.unit !== "servings" && item.unit !== "serving") {
+                    calories = data.items[0].calories * fraction;
+                    totalCalories = totalCalories + calories;
+                }
 
-            caloriesHeading.textContent = `${Math.round(totalCalories)} Calories total`;
-        }
-        console.log(`${item.original}  Calories: ${calories}  (${item.unit})`)
-        return calories;
-    });
+                caloriesHeading.textContent = `${Math.round(totalCalories)} Calories total`;
+            }
+            console.log(`${item.original}  Calories: ${calories}  (${item.unit})`)
+            return calories;
+        });
 }
 
 function computeCalories(data) {
@@ -178,3 +180,220 @@ function computeCalories(data) {
             });
     }
 }
+
+
+//--------Golnaz added these--------
+
+
+document.addEventListener('DOMContentLoaded', function () {
+    var elems = document.querySelectorAll('.dropdown-trigger');
+    var instances = M.Dropdown.init(elems);
+});
+document.addEventListener('DOMContentLoaded', function () {
+    var elems = document.querySelectorAll('.collapsible');
+    var instances = M.Collapsible.init(elems);
+});
+
+
+
+breakfastEl.addEventListener("click", function (event) {
+
+    var childNodes = descriptionEl.childNodes;
+    for (var i = childNodes.length - 1; i >= 0; i--) {
+        var childNode = childNodes[i];
+        descriptionEl.removeChild(childNode);
+    }
+    var childNodes = resultEl.childNodes;
+    for (var i = childNodes.length - 1; i >= 0; i--) {
+        var childNode = childNodes[i];
+        resultEl.removeChild(childNode);
+    }
+
+
+    var element = event.target;
+    if (element.matches("a") === true) {
+        var inputId = element.getAttribute("id");
+        console.log(inputId);
+    }
+
+    fetch(`https://api.spoonacular.com/recipes/complexSearch?cuisine=${inputId}&type=breakfast&number=10&apiKey=4b9fe343ff764f7494d88321c248a6ee`, {
+        method: 'GET',
+        credentials: 'same-origin',
+        redirect: 'follow',
+    })
+        .then(function (response) {
+            return response.json();
+        })
+        .then(function (data) {
+            console.log(data);
+            console.log(data.results.length);
+            for (var i = 0; i < data.results.length; i++) {
+                var tag = document.createElement('a');
+                tag.setAttribute("href", "#");
+                tag.setAttribute("style", "display: inline; margin-bottom:20px; margin-left:20px; margin-right:80px");
+                tag.setAttribute("data-id", data.results[i].id);
+                tag.textContent = data.results[i].title;
+                console.log(data.results[i].title);
+                var img = document.createElement('img');
+                var source = data.results[i].image
+                img.setAttribute("src", source);
+                resultEl.appendChild(img);
+                resultEl.appendChild(tag);
+            }
+        });
+
+});
+
+
+
+mainCourseEl.addEventListener("click", function (event) {
+
+    var childNodes = descriptionEl.childNodes;
+    for (var i = childNodes.length - 1; i >= 0; i--) {
+        var childNode = childNodes[i];
+        descriptionEl.removeChild(childNode);
+    }
+    var childNodes = resultEl.childNodes;
+    for (var i = childNodes.length - 1; i >= 0; i--) {
+        var childNode = childNodes[i];
+        resultEl.removeChild(childNode);
+    }
+
+
+    var element = event.target;
+    if (element.matches("a") === true) {
+        var inputId = element.getAttribute("id");
+        console.log(inputId);
+    }
+
+    fetch(`https://api.spoonacular.com/recipes/complexSearch?cuisine=${inputId}&type=main course&number=10&apiKey=4b9fe343ff764f7494d88321c248a6ee`, {
+        method: 'GET',
+        credentials: 'same-origin',
+        redirect: 'follow',
+    })
+        .then(function (response) {
+            return response.json();
+        })
+        .then(function (data) {
+            console.log(data);
+            console.log(data.results.length);
+            for (var i = 0; i < data.results.length; i++) {
+                var tag = document.createElement('a');
+                tag.setAttribute("href", "#");
+                tag.setAttribute("style", "display: inline; margin-bottom:20px; margin-left:20px; margin-right:80px");
+                tag.setAttribute("data-id", data.results[i].id);
+                tag.textContent = data.results[i].title;
+                console.log(data.results[i].title);
+                var img = document.createElement('img');
+                var source = data.results[i].image
+                img.setAttribute("src", source);
+                resultEl.appendChild(img);
+                resultEl.appendChild(tag);
+            }
+        });
+
+});
+
+
+sideDishEl.addEventListener("click", function (event) {
+
+    var childNodes = descriptionEl.childNodes;
+    for (var i = childNodes.length - 1; i >= 0; i--) {
+        var childNode = childNodes[i];
+        descriptionEl.removeChild(childNode);
+    }
+    var childNodes = resultEl.childNodes;
+    for (var i = childNodes.length - 1; i >= 0; i--) {
+        var childNode = childNodes[i];
+        resultEl.removeChild(childNode);
+    }
+
+
+    var element = event.target;
+    if (element.matches("a") === true) {
+        var inputId = element.getAttribute("id");
+        console.log(inputId);
+    }
+
+    fetch(`https://api.spoonacular.com/recipes/complexSearch?cuisine=${inputId}&type=side dish&number=10&apiKey=4b9fe343ff764f7494d88321c248a6ee`, {
+        method: 'GET',
+        credentials: 'same-origin',
+        redirect: 'follow',
+    })
+        .then(function (response) {
+            return response.json();
+        })
+        .then(function (data) {
+            console.log(data);
+            console.log(data.results.length);
+            for (var i = 0; i < data.results.length; i++) {
+                var tag = document.createElement('a');
+                tag.setAttribute("href", "#");
+                tag.setAttribute("style", "display: inline; margin-bottom:20px; margin-left:20px; margin-right:80px");
+                tag.setAttribute("data-id", data.results[i].id);
+                tag.textContent = data.results[i].title;
+                console.log(data.results[i].title);
+                var img = document.createElement('img');
+                var source = data.results[i].image
+                img.setAttribute("src", source);
+                resultEl.appendChild(img);
+                resultEl.appendChild(tag);
+            }
+        });
+
+});
+
+
+dessertEl.addEventListener("click", function (event) {
+
+    var childNodes = descriptionEl.childNodes;
+    for (var i = childNodes.length - 1; i >= 0; i--) {
+        var childNode = childNodes[i];
+        descriptionEl.removeChild(childNode);
+    }
+    var childNodes = resultEl.childNodes;
+    for (var i = childNodes.length - 1; i >= 0; i--) {
+        var childNode = childNodes[i];
+        resultEl.removeChild(childNode);
+    }
+
+
+    var element = event.target;
+    if (element.matches("a") === true) {
+        var inputId = element.getAttribute("id");
+        console.log(inputId);
+    }
+
+    fetch(`https://api.spoonacular.com/recipes/complexSearch?cuisine=${inputId}&type=dessert&number=10&apiKey=4b9fe343ff764f7494d88321c248a6ee`, {
+        method: 'GET',
+        credentials: 'same-origin',
+        redirect: 'follow',
+    })
+        .then(function (response) {
+            return response.json();
+        })
+        .then(function (data) {
+            console.log(data);
+            console.log(data.results.length);
+            for (var i = 0; i < data.results.length; i++) {
+                var tag = document.createElement('a');
+                tag.setAttribute("href", "#");
+                tag.setAttribute("style", "display: inline; margin-bottom:20px; margin-left:20px; margin-right:80px");
+                tag.setAttribute("data-id", data.results[i].id);
+                tag.textContent = data.results[i].title;
+                console.log(data.results[i].title);
+                var img = document.createElement('img');
+                var source = data.results[i].image
+                img.setAttribute("src", source);
+                resultEl.appendChild(img);
+                resultEl.appendChild(tag);
+            }
+        });
+
+});
+
+
+
+
+
+
