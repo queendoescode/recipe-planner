@@ -11,17 +11,58 @@
 </head>
 <body>
     <header>
-          <nav>
-            <div class="nav-wrapper">
-              <a href="#!" class="brand-logo">Awesome Recipe</a>
-              <ul class="right hide-on-med-and-down">
-                <li><a class="waves-effect waves-light btn">Breakfast <i class="material-icons right">arrow_drop_down</i></a></li>
-                <li><a class="waves-effect waves-light btn">Main course <i class="material-icons right">arrow_drop_down</i></a></li>
-                <li><a class="waves-effect waves-light btn">Side dish <i class="material-icons right">arrow_drop_down</i></a></li>
-                <li><a class="waves-effect waves-light btn">Dessert <i class="material-icons right">arrow_drop_down</i></a></li>
-              </ul>
-            </div>
-          </nav>
+      <nav>
+        <div class="nav-wrapper">
+          <a href="#!" class="brand-logo">Awesome Recipe</a>
+          <ul class="right hide-on-med-and-down">
+            
+            
+            <!-- Dropdown Trigger -->
+            <a class='dropdown-trigger waves-effect waves-light btn' href='#' data-target='dropdown1'>Breakfast</a>
+            <!-- Dropdown Structure -->
+            <ul id='dropdown1' class='dropdown-content'>
+              <li><a href="#!" id="british">British</a></li>
+              <li><a href="#!" id="american">American</a></li>
+              <li><a href="#!" id="chinese">Chinese</a></li>
+              <li><a href="#!" id="italian">Italian</a></li>
+              <li><a href="#!" id="mexican">Mexican</a></li>
+            </ul>
+            
+            <!-- Dropdown Trigger -->
+            <a class='dropdown-trigger waves-effect waves-light btn' href='#' data-target='dropdown2'>Main Course</a>
+            <!-- Dropdown Structure -->
+            <ul id='dropdown2' class='dropdown-content'>
+              <li><a href="#!" id="italian">Italian</a></li>
+              <li><a href="#!" id="american">American</a></li>
+              <li><a href="#!" id="japanese">Japanese</a></li>
+              <li><a href="#!" id="indian">Indian</a></li>
+              <li><a href="#!" id="mexican">Mexican</a></li>
+            </ul>
+
+            <!-- Dropdown Trigger -->
+            <a class='dropdown-trigger waves-effect waves-light btn' href='#' data-target='dropdown3'>Side Dish</a>
+            <!-- Dropdown Structure -->
+            <ul id='dropdown3' class='dropdown-content'>
+              <li><a href="#!" id="american">American</a></li>
+              <li><a href="#!" id="greek">Greek</a></li>
+              <li><a href="#!" id="korean">Korean</a></li>
+              <li><a href="#!" id="french">French</a></li>
+              <li><a href="#!" id="mexican">Mexican</a></li>
+            </ul>
+            
+            <!-- Dropdown Trigger -->
+            <a class='dropdown-trigger waves-effect waves-light btn' href='#' data-target='dropdown4'>Desserts</a>
+            <!-- Dropdown Structure -->
+            <ul id='dropdown4' class='dropdown-content'>
+              <li><a href="#!" id="italian">Italian</a></li>
+              <li><a href="#!" id="american">American</a></li>
+              <li><a href="#!" id="asian">Asian</a></li>
+              <li><a href="#!" id="latinAmerican">Latin</a></li>
+              <li><a href="#!" id="french">French</a></li>
+            </ul>
+          </ul>
+        </div>
+      </nav>
     </header>
 
     <section class="middle">
