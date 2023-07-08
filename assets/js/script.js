@@ -9,6 +9,30 @@ var mainCourseEl = document.querySelector("#dropdown2");
 var sideDishEl = document.querySelector("#dropdown3");
 var dessertEl = document.querySelector("#dropdown4");
 
+// This creates the image and heading elements for a recipe
+// and the div that is the "recipe card". 
+// It returns the parent div.
+
+function makeRecipeCard(recipe) {
+    console.log(recipe)
+    var recipeDiv = document.createElement("div");
+    recipeDiv.setAttribute("class", "recipe-card");
+
+    var img = document.createElement('img');
+    var source = recipe.image;
+    img.setAttribute("src", source);
+    recipeDiv.appendChild(img);
+
+    var tag = document.createElement('a');
+    tag.setAttribute("href", "#");
+    tag.setAttribute("data-id", recipe.id);
+    tag.textContent = recipe.title;
+    console.log(recipe.title);
+    
+    recipeDiv.appendChild(tag);
+    return recipeDiv;
+}
+
 function activateSearchBtn() {
 
     var childNodes = descriptionEl.childNodes;
@@ -41,17 +65,8 @@ function activateSearchBtn() {
             console.log(data);
             console.log(data.results.length);
             for (var i = 0; i < data.results.length; i++) {
-                var tag = document.createElement('a');
-                tag.setAttribute("href", "#");
-                tag.setAttribute("style", "display: inline; margin-bottom:20px; margin-left:20px; margin-right:80px");
-                tag.setAttribute("data-id", data.results[i].id);
-                tag.textContent = data.results[i].title;
-                console.log(data.results[i].title);
-                var img = document.createElement('img');
-                var source = data.results[i].image
-                img.setAttribute("src", source);
-                resultEl.appendChild(img);
-                resultEl.appendChild(tag);
+                var card = makeRecipeCard(data.results[i]);
+                resultEl.appendChild(card);
             }
         });
 
@@ -224,21 +239,10 @@ breakfastEl.addEventListener("click", function (event) {
         .then(function (response) {
             return response.json();
         })
-        .then(function (data) {
-            console.log(data);
-            console.log(data.results.length);
+        .then(data => {
             for (var i = 0; i < data.results.length; i++) {
-                var tag = document.createElement('a');
-                tag.setAttribute("href", "#");
-                tag.setAttribute("style", "display: inline; margin-bottom:20px; margin-left:20px; margin-right:80px");
-                tag.setAttribute("data-id", data.results[i].id);
-                tag.textContent = data.results[i].title;
-                console.log(data.results[i].title);
-                var img = document.createElement('img');
-                var source = data.results[i].image
-                img.setAttribute("src", source);
-                resultEl.appendChild(img);
-                resultEl.appendChild(tag);
+                var card = makeRecipeCard(data.results[i]);
+                resultEl.appendChild(card);
             }
         });
 
@@ -278,17 +282,8 @@ mainCourseEl.addEventListener("click", function (event) {
             console.log(data);
             console.log(data.results.length);
             for (var i = 0; i < data.results.length; i++) {
-                var tag = document.createElement('a');
-                tag.setAttribute("href", "#");
-                tag.setAttribute("style", "display: inline; margin-bottom:20px; margin-left:20px; margin-right:80px");
-                tag.setAttribute("data-id", data.results[i].id);
-                tag.textContent = data.results[i].title;
-                console.log(data.results[i].title);
-                var img = document.createElement('img');
-                var source = data.results[i].image
-                img.setAttribute("src", source);
-                resultEl.appendChild(img);
-                resultEl.appendChild(tag);
+                var card = makeRecipeCard(data.results[i]);
+                resultEl.appendChild(card);
             }
         });
 
@@ -327,17 +322,8 @@ sideDishEl.addEventListener("click", function (event) {
             console.log(data);
             console.log(data.results.length);
             for (var i = 0; i < data.results.length; i++) {
-                var tag = document.createElement('a');
-                tag.setAttribute("href", "#");
-                tag.setAttribute("style", "display: inline; margin-bottom:20px; margin-left:20px; margin-right:80px");
-                tag.setAttribute("data-id", data.results[i].id);
-                tag.textContent = data.results[i].title;
-                console.log(data.results[i].title);
-                var img = document.createElement('img');
-                var source = data.results[i].image
-                img.setAttribute("src", source);
-                resultEl.appendChild(img);
-                resultEl.appendChild(tag);
+                var card = makeRecipeCard(data.results[i]);
+                resultEl.appendChild(card);
             }
         });
 
@@ -376,17 +362,8 @@ dessertEl.addEventListener("click", function (event) {
             console.log(data);
             console.log(data.results.length);
             for (var i = 0; i < data.results.length; i++) {
-                var tag = document.createElement('a');
-                tag.setAttribute("href", "#");
-                tag.setAttribute("style", "display: inline; margin-bottom:20px; margin-left:20px; margin-right:80px");
-                tag.setAttribute("data-id", data.results[i].id);
-                tag.textContent = data.results[i].title;
-                console.log(data.results[i].title);
-                var img = document.createElement('img');
-                var source = data.results[i].image
-                img.setAttribute("src", source);
-                resultEl.appendChild(img);
-                resultEl.appendChild(tag);
+                var card = makeRecipeCard(data.results[i]);
+                resultEl.appendChild(card);
             }
         });
 

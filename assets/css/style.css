@@ -5,3 +5,32 @@
 .block {
     display: block;
 }
+
+.recipe-card {
+  margin: 30px ; 
+  font-size: 20px;
+ 
+
+  width: 20%;
+
+}
+
+#result {
+
+    display: flex;
+    flex-wrap: wrap;
+}
+
+a {
+    display: block;
+    margin: 5px;
+    
+
+}
+
+img {
+    width: 100%;
+    border: 10px solid pink;
+    border-radius: 20px;
+    
+}
