@@ -124,7 +124,7 @@ function getNutritionPromise(item, caloriesHeading) {
     }
     // Some recipes use cup for solid ingredients which produces a wrong calorie figure
     // but we can convert to ounces (oz). Also handles fractional cups (e.g. "1/4").
-    if (item.unit == "cup") {
+    if (item.unit == "cup" || item.unit == "cups") {
         fraction = 8 * item.amount;
         queryText = `1 oz ${item.originalName}`;
     }
