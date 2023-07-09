@@ -9,6 +9,9 @@ var mainCourseEl = document.querySelector("#dropdown2");
 var sideDishEl = document.querySelector("#dropdown3");
 var dessertEl = document.querySelector("#dropdown4");
 
+var allLiked = [];
+
+
 // This creates the image and heading elements for a recipe
 // and the div that is the "recipe card". 
 // It returns the parent div.
@@ -16,12 +19,19 @@ var dessertEl = document.querySelector("#dropdown4");
 function makeRecipeCard(recipe) {
     console.log(recipe)
     var recipeDiv = document.createElement("div");
-    recipeDiv.setAttribute("class", "recipe-card");
+    recipeDiv.setAttribute("class", "recipe-card image-container");
+    recipeDiv.setAttribute("id", "custom-container");
+
 
     var img = document.createElement('img');
     var source = recipe.image;
     img.setAttribute("src", source);
+    var favIcon = document.createElement('i');
+    favIcon.setAttribute("class", "material-icons favorite-icon");
+    favIcon.setAttribute("data-id", recipe.id);
+    favIcon.textContent = "favorite_border";
     recipeDiv.appendChild(img);
+    recipeDiv.appendChild(favIcon);
 
     var tag = document.createElement('a');
     tag.setAttribute("href", "#");
@@ -85,6 +95,8 @@ resultEl.addEventListener("click", function (event) {
     if (element.matches("a") === true) {
         var inputId = element.getAttribute("data-id");
         console.log(inputId);
+    }else {
+        return;
     }
     fetch(`https://api.spoonacular.com/recipes/${inputId}/information?apiKey=4b9fe343ff764f7494d88321c248a6ee`, {
         method: 'GET',
@@ -368,6 +380,58 @@ dessertEl.addEventListener("click", function (event) {
         });
 
 });
+
+
+resultEl.addEventListener('click', function (event) {
+
+    var isLikedFood = localStorage.getItem("isLiked");
+    if (isLikedFood) {
+      allLiked = isLikedFood.split(',');
+      console.log(allLiked);
+    }
+  
+    var element = event.target;
+
+    if (element.matches("i") === true) {
+        var inputId = element.getAttribute("data-id");
+        element.textContent = "favorite";
+        console.log(inputId);
+    } else {
+        return;
+    }
+    localStorage.setItem('isLiked', inputId);
+    allLikedRender();
+
+});
+
+
+
+function allLikedRender() {
+
+    var likedFood = localStorage.getItem('isLiked');
+    var arrayLikedFood = likedFood.split(',');
+
+    var difference = arrayLikedFood.slice(-1);
+    var differ = difference[0];
+    var check = allLiked.includes(differ);
+
+    console.log(difference);
+    console.log(differ);
+    console.log(check);
+    if (!check) {
+        allLiked.push(differ);
+        console.log(allLiked);
+    }
+
+    //update local storage
+    var stringAllLiked = allLiked.join(',');
+    localStorage.setItem("isLiked", stringAllLiked);
+}
+
+
+
+
+
 
 
 
