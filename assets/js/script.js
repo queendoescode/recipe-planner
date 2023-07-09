@@ -8,6 +8,7 @@ var breakfastEl = document.querySelector("#dropdown1");
 var mainCourseEl = document.querySelector("#dropdown2");
 var sideDishEl = document.querySelector("#dropdown3");
 var dessertEl = document.querySelector("#dropdown4");
+var favFoodsEl = document.querySelector("#fav-food");
 var heroImageEl = document.querySelector("#hero-image");
 
 var allLiked = [];
@@ -59,28 +60,35 @@ function activateSearchBtn() {
 
 
     var userInput = userInputEl.value;
-    // userInputEl.value = " ";
+    userInputEl.value = " ";
 
-    console.log(userInput);
-    var baseUrl = 'https://api.spoonacular.com/recipes/complexSearch';
-    var finalUrl = `${baseUrl}?query=${encodeURIComponent(userInput)}&apiKey=4b9fe343ff764f7494d88321c248a6ee`;
-    fetch(finalUrl, {
-        method: 'GET',
-        credentials: 'same-origin',
-        redirect: 'follow',
-    })
-        .then(function (response) {
-            return response.json();
+    if (userInput) {
+        console.log(userInput);
+        var baseUrl = 'https://api.spoonacular.com/recipes/complexSearch';
+        var finalUrl = `${baseUrl}?query=${encodeURIComponent(userInput)}&apiKey=4b9fe343ff764f7494d88321c248a6ee`;
+        fetch(finalUrl, {
+            method: 'GET',
+            credentials: 'same-origin',
+            redirect: 'follow',
         })
-        .then(function (data) {
-            console.log(data);
-            console.log(data.results.length);
-            heroImageEl.remove();
-            for (var i = 0; i < data.results.length; i++) {
-                var card = makeRecipeCard(data.results[i]);
-                resultEl.appendChild(card);
-            }
-        });
+            .then(function (response) {
+                return response.json();
+            })
+            .then(function (data) {
+                console.log(data);
+                console.log(data.results.length);
+                heroImageEl.remove();
+                for (var i = 0; i < data.results.length; i++) {
+                    var card = makeRecipeCard(data.results[i]);
+                    resultEl.appendChild(card);
+                }
+            });
+    
+
+    }else {
+        return;
+    }
+
 
 }
 
@@ -435,12 +443,6 @@ function allLikedRender() {
 }
 
 
-
-
-
-
-
-
-
-
-
+favFoodsEl.addEventListener("click", function() {
+  window.location.href = "favs.html";
+});
