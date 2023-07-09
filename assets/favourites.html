@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
+    <title>Document</title>
+</head>
+<body>
+    <header>
+          <nav>
+            <div class="nav-wrapper">
+              <a href="#!" class="brand-logo">Awesome Recipe</a>
+              <ul class="right hide-on-med-and-down">
+                <li><a class="waves-effect waves-light btn">Home<i class="material-icons right">arrow_drop_down</i></a></li>
+                <li><a class="waves-effect waves-light btn">Breakfast<i class="material-icons right">arrow_drop_down</i></a></li>
+                <li><a class="waves-effect waves-light btn">Main course<i class="material-icons right">arrow_drop_down</i></a></li>
+                <li><a class="waves-effect waves-light btn">Side dish<i class="material-icons right">arrow_drop_down</i></a></li>
+                <li><a class="waves-effect waves-light btn">Dessert<i class="material-icons right">arrow_drop_down</i></a></li>
+                <li><a class="waves-effect waves-light btn">Caloric Limit<i class="material-icons right">arrow_drop_down</i></a></li>
+              </ul>
+            </div>
+          </nav>
+    </header>
+
+    <section class="middle">
+        <div class="row">
+            <div class="input-field col s6 block">
+              <input  id="user-input" type="text" class="validate">
+              <label class="active" for="user-input">Search for your favourtie dishes</label>
+              <a class="waves-effect waves-light btn container-width search-btn bottom">Search</a>
+        </div>
+    </section>
+    
+    <section class="resultsEl">
+      <p>This is where the searched/clicked meals will be displayed with the image and the steps.</p>
+    </section>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <style>
+  
+    .square-card {
+      width: 200px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      margin: 10px;
+    }
+  
+    .black-border {
+      border: 1px solid #000;
+    }
+
+    .carousel-item {
+      display: flex !important;
+      justify-content: center;
+    }
+
+    .carousel-item .card {
+      flex: 0 0 33.33%;
+      max-width: 33.33%;
+      margin: 0 1rem;
+      justify-content: center;
+      align-items: center;
+    }
+  </style>
+
+  <title>Carousel Example</title>
+</head>
+
+<body>
+  <section class="recent-dishes container">
+    <div class="row">
+      <div class="col s12">
+        <h4 class="center-align">Recently Favourtied Meals</h4>
+        <div class="carousel carousel-slider">
+          <div class="carousel-item">
+            <div class="card square-card black-border">
+              <div class="card-content">
+                <span class="card-title white-text">Dish 1</span>
+                <p>Dish</p>
+              </div>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <div class="card square-card black-border">
+              <div class="card-content">
+                <span class="card-title white-text">Dish 2</span>
+                <p>Dish</p>
+              </div>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <div class="card square-card black-border">
+              <div class="card-content">
+                <span class="card-title white-text">Dish 3</span>
+                <p>Dish</p>
+              </div>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <div class="card square-card black-border">
+              <div class="card-content">
+                <span class="card-title white-text">Dish 4</span>
+                <p>Dish</p>
+              </div>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <div class="card square-card black-border">
+              <div class="card-content">
+                <span class="card-title white-text">Dish 5</span>
+                <p>Dish</p>
+              </div>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <div class="card square-card black-border">
+              <div class="card-content">
+                <span class="card-title white-text">Dish 6</span>
+                <p>Dish</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="dishes-container">
+    <div class="row">
+      <div class="col s12">
+        <h4 class="center-align">Breakfast</h4>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col s12 m6 l3">
+        <div class="card">
+          <div class="card-image">
+            <img src="path/to/breakfast-image1.jpg" alt="Breakfast Dish 1">
+            <span class="card-title">Dish 1</span>
+          </div>
+          <div class="card-content">
+            <p>Description of Dish 1.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col s12 m6 l3">
+        <div class="card">
+          <div class="card-image">
+            <img src="path/to/breakfast-image2.jpg" alt="Breakfast Dish 2">
+            <span class="card-title">Dish 2</span>
+          </div>
+          <div class="card-content">
+            <p>Description of Dish 2.</p>
+          </div>
+        </div>
+      </div>
+      <!-- Add more breakfast dish cards here -->
+    </div>
+    <div class="row">
+      <div class="col s12">
+        <h4 class="center-align">Side Dishes</h4>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col s12 m6 l3">
+        <div class="card">
+          <div class="card-image">
+            <img src="path/to/side-image1.jpg" alt="Side Dish 1">
+            <span class="card-title">Dish 1</span>
+          </div>
+          <div class="card-content">
+            <p>Description of Dish 1.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col s12 m6 l3">
+        <div class="card">
+          <div class="card-image">
+            <img src="path/to/side-image2.jpg" alt="Side Dish 2">
+            <span class="card-title">Dish 2</span>
+          </div>
+          <div class="card-content">
+            <p>Description of Dish 2.</p>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col s12">
+          <h4 class="center-align">Maincourse</h4>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col s12 m6 l3">
+          <div class="card">
+            <div class="card-image">
+              <img src="path/to/main-image1.jpg" alt="Main Dish 1">
+              <span class="card-title">Dish 1</span>
+            </div>
+            <div class="card-content">
+              <p>Description of Dish 1.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col s12 m6 l3">
+          <div class="card">
+            <div class="card-image">
+              <img src="path/to/main-image2.jpg" alt="Main Dish 2">
+              <span class="card-title">Dish 2</span>
+            </div>
+            <div class="card-content">
+              <p>Description of Dish 2.</p>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col s12">
+            <h4 class="center-align">Desserts</h4>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col s12 m6 l3">
+            <div class="card">
+              <div class="card-image">
+                <img src="path/to/dessert-image1.jpg" alt="Dessert 1">
+                <span class="card-title">Dish 1</span>
+              </div>
+              <div class="card-content">
+                <p>Description of Dish 1.</p>
+              </div>
+            </div>
+          </div>
+          <div class="col s12 m6 l3">
+            <div class="card">
+              <div class="card-image">
+                <img src="path/to/appetizer-image2.jpg" alt="Dessert 2">
+                <span class="card-title">Dish 2</span>
+              </div>
+              <div class="card-content">
+                <p>Description of Dish 2.</p>
+              </div>
+            </div>
+          </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      var carouselElems = document.querySelectorAll('.carousel');
+      var options = {
+        fullWidth: true,
+        indicators: true,
+        duration: 200,
+        numVisible: 3  
+      };
+      var instances = M.Carousel.init(carouselElems, options);
+    });
+  </script>
+</body>
+</html>
