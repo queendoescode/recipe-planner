@@ -53,3 +53,34 @@ img {
     justify-content: end;
     margin-top: 20px;
 }
+
+#hero-image {
+    position: relative;
+}
+
+#hero-image div {
+    position: absolute;
+    left: 40px;   
+    top: 20px;
+    color: white;
+    font-family: 'Fasthand', cursive;
+
+}
+
+#hero-image h1 {
+    font-size: 100px;
+    line-height: 75%;
+}
+
+#hero-image h2 {
+    font-size: 65px;
+}
+
+@media screen and (max-width: 700px) {
+    #hero-image h1 {
+        font-size: 70px;
+    }
+    #hero-image h2 {
+        display: none;
+    }
+}
