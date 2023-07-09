@@ -9,10 +9,7 @@
 .recipe-card {
   margin: 30px ; 
   font-size: 20px;
- 
-
   width: 20%;
-
 }
 
 #result {
@@ -24,13 +21,35 @@
 a {
     display: block;
     margin: 5px;
-    
-
 }
 
 img {
     width: 100%;
     border: 10px solid pink;
     border-radius: 20px;
-    
+}
+
+.favorite-icon {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    color: red;
+    font-size: 24px;
+}
+
+.image-container {
+
+    position: relative;
+
+}
+
+.favorite-icon:hover {
+    cursor: pointer;
+}
+
+
+#fav-food {
+    display: flex;
+    justify-content: end;
+    margin-top: 20px;
 }
