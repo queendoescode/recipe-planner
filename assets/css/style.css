@@ -54,6 +54,21 @@ img {
     margin-top: 20px;
 }
 
+#btn-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 25px;
+}
+
+#fav-list {
+    margin-left: 25px;
+    margin-right: 25px;
+    font-size: larger;
+    font-weight: 600;
+    border: 10px solid pink;
+    border-radius: 20px;
+}
+
 #hero-image {
     position: relative;
 }
