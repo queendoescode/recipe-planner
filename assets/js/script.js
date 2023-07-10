@@ -65,7 +65,7 @@ function activateSearchBtn() {
     if (userInput) {
         console.log(userInput);
         var baseUrl = 'https://api.spoonacular.com/recipes/complexSearch';
-        var finalUrl = `${baseUrl}?query=${encodeURIComponent(userInput)}&apiKey=4b9fe343ff764f7494d88321c248a6ee`;
+        var finalUrl = `${baseUrl}?query=${encodeURIComponent(userInput)}&apiKey=96dedef6d4244eee817b8f5cc4b3179f`;
         fetch(finalUrl, {
             method: 'GET',
             credentials: 'same-origin',
@@ -108,7 +108,7 @@ resultEl.addEventListener("click", function (event) {
     }else {
         return;
     }
-    fetch(`https://api.spoonacular.com/recipes/${inputId}/information?apiKey=4b9fe343ff764f7494d88321c248a6ee`, {
+    fetch(`https://api.spoonacular.com/recipes/${inputId}/information?apiKey=96dedef6d4244eee817b8f5cc4b3179f`, {
         method: 'GET',
         credentials: 'same-origin',
         redirect: 'follow',
@@ -122,7 +122,7 @@ resultEl.addEventListener("click", function (event) {
 
             computeCalories(data);
         });
-    fetch(`https://api.spoonacular.com/recipes/${inputId}/analyzedInstructions?apiKey=4b9fe343ff764f7494d88321c248a6ee`, {
+    fetch(`https://api.spoonacular.com/recipes/${inputId}/analyzedInstructions?apiKey=96dedef6d4244eee817b8f5cc4b3179f`, {
         method: 'GET',
         credentials: 'same-origin',
         redirect: 'follow',
@@ -253,7 +253,7 @@ breakfastEl.addEventListener("click", function (event) {
         console.log(inputId);
     }
 
-    fetch(`https://api.spoonacular.com/recipes/complexSearch?cuisine=${inputId}&type=breakfast&number=10&apiKey=4b9fe343ff764f7494d88321c248a6ee`, {
+    fetch(`https://api.spoonacular.com/recipes/complexSearch?cuisine=${inputId}&type=breakfast&number=10&apiKey=96dedef6d4244eee817b8f5cc4b3179f`, {
         method: 'GET',
         credentials: 'same-origin',
         redirect: 'follow',
@@ -293,7 +293,7 @@ mainCourseEl.addEventListener("click", function (event) {
         console.log(inputId);
     }
 
-    fetch(`https://api.spoonacular.com/recipes/complexSearch?cuisine=${inputId}&type=main course&number=10&apiKey=4b9fe343ff764f7494d88321c248a6ee`, {
+    fetch(`https://api.spoonacular.com/recipes/complexSearch?cuisine=${inputId}&type=main course&number=10&apiKey=96dedef6d4244eee817b8f5cc4b3179f`, {
         method: 'GET',
         credentials: 'same-origin',
         redirect: 'follow',
@@ -334,7 +334,7 @@ sideDishEl.addEventListener("click", function (event) {
         console.log(inputId);
     }
 
-    fetch(`https://api.spoonacular.com/recipes/complexSearch?cuisine=${inputId}&type=side dish&number=10&apiKey=4b9fe343ff764f7494d88321c248a6ee`, {
+    fetch(`https://api.spoonacular.com/recipes/complexSearch?cuisine=${inputId}&type=side dish&number=10&apiKey=96dedef6d4244eee817b8f5cc4b3179f`, {
         method: 'GET',
         credentials: 'same-origin',
         redirect: 'follow',
@@ -375,7 +375,7 @@ dessertEl.addEventListener("click", function (event) {
         console.log(inputId);
     }
 
-    fetch(`https://api.spoonacular.com/recipes/complexSearch?cuisine=${inputId}&type=dessert&number=10&apiKey=4b9fe343ff764f7494d88321c248a6ee`, {
+    fetch(`https://api.spoonacular.com/recipes/complexSearch?cuisine=${inputId}&type=dessert&number=10&apiKey=96dedef6d4244eee817b8f5cc4b3179f`, {
         method: 'GET',
         credentials: 'same-origin',
         redirect: 'follow',

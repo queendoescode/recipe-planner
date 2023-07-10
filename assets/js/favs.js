@@ -12,7 +12,7 @@ showSavedBtn.addEventListener('click', function () {
         for (var i = 0; i < arrayLikedFood.length; i++) {
             var userInput = arrayLikedFood[i];
             console.log(userInput);
-            fetch(`https://api.spoonacular.com/recipes/${arrayLikedFood[i]}/information?apiKey=4b9fe343ff764f7494d88321c248a6ee`, {
+            fetch(`https://api.spoonacular.com/recipes/${arrayLikedFood[i]}/information?apiKey=96dedef6d4244eee817b8f5cc4b3179f`, {
                 method: 'GET',
                 credentials: 'same-origin',
                 redirect: 'follow',
@@ -23,9 +23,19 @@ showSavedBtn.addEventListener('click', function () {
                 .then(function (data) {
                     console.log(data);
                     console.log(data.title);
-                    var newTag = document.createElement("li");
-                    newTag.textContent = data.title;
-                    favListEl.appendChild(newTag);
+                   
+                    var recipeDiv = document.createElement("div");
+                    recipeDiv.setAttribute("class", "recipe-card image-container");
+                    recipeDiv.setAttribute("id", "custom-container");
+                    var img = document.createElement('img');
+                    var source = data.image;
+                    img.setAttribute("src", source);
+                    recipeDiv.appendChild(img);
+                    var tag = document.createElement('a');
+                    tag.setAttribute("href", "#");
+                    tag.textContent = data.title;
+                    recipeDiv.appendChild(tag);
+                    favListEl.appendChild(recipeDiv);
                 });
         }
     } else {
