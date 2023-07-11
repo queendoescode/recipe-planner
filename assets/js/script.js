@@ -1,3 +1,12 @@
+// API Keys:
+
+// Important - use your own personal keys to avoid hitting rate limits too often
+
+var nutritionixKey = "your personal key here";
+var nutritionixAppId = "your personal app id here";
+var nutritionixUrl = "https://trackapi.nutritionix.com/v2/natural/nutrients";
+
+
 var searchBtnEl = document.querySelector(".search-btn");
 var userInputEl = document.querySelector("#user-input");
 var resultEl = document.querySelector("#result");
@@ -145,11 +154,6 @@ searchBtnEl.addEventListener('click', activateSearchBtn);
 
 // ----- Queen Start
 
-
-var nutritionixKey = "6e3f97fddf2bd417bafb232f06e45323";
-var nutritionixUrl = "https://trackapi.nutritionix.com/v2/natural/nutrients";
-var nutritionixAppId = "06d181a0";
-
 var totalCalories = 0;
 
 function getNutritionPromise(item, caloriesHeading) {
@@ -189,16 +193,25 @@ function computeCalories(data) {
     var caloriesHeading = document.createElement('h3');
     descriptionEl.appendChild(caloriesHeading);
 
+    // To avoid sending too many requests all at once,
+    // we will space each request out by a short delay.
+
+    var millisecondsBetweenRequests = 100; // maximum 10 per second
+
     for (var i = 0; i < data.extendedIngredients.length; i++) {
         var ingreLine = document.createElement('p');
         ingreLine.textContent = data.extendedIngredients[i].original;
         descriptionEl.appendChild(ingreLine);
 
-        getNutritionPromise(data.extendedIngredients[i], caloriesHeading)
-            .then(calories => {
-                ;
-            });
+        var ingredient = data.extendedIngredients[i];
+        setTimeout(
+            getNutritionPromise,
+            i * millisecondsBetweenRequests,
+            ingredient, 
+            caloriesHeading);
     }
+
+
 }
 
 
