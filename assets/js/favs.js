@@ -2,6 +2,8 @@ var showSavedBtn = document.querySelector("#show-btn");
 var favListEl = document.querySelector("#fav-list");
 
 
+
+//when user click on show button, it shows all favorite foods on screen
 showSavedBtn.addEventListener('click', function () {
 
     var likedFood = localStorage.getItem('isLiked');
