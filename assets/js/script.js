@@ -6,7 +6,7 @@ var nutritionixKey = "bd89972978beea9da43d3840c32eedf9";
 var nutritionixAppId = "f3463952";
 var nutritionixUrl = "https://trackapi.nutritionix.com/v2/natural/nutrients";
 
-var spoonacularKey = "09127c50f6a74092904158506a2c0246";
+var spoonacularKey = "c483c6abaa8c4cd59559ac1eb0ff2720";
 
 
 var searchBtnEl = document.querySelector(".search-btn");
@@ -31,8 +31,8 @@ function makeRecipeCard(recipe) {
 
 
         //------------------------------------------------------------------
-        var likedFood = localStorage.getItem('isLiked');
-        var arrayLikedFood = likedFood.split(',');
+
+        
         //------------------------------------------------------------------ 
 
 
@@ -49,6 +49,11 @@ function makeRecipeCard(recipe) {
 
 // to remain bold heart for favorite foods after refreshing the page
 //----------------------------------------------------------------------------
+
+var likedFood = localStorage.getItem('isLiked');
+if (likedFood) {
+    var arrayLikedFood = likedFood.split(',');
+
     var num = recipe.id;
     var array = [];
     for (var i=0; i<arrayLikedFood.length; i++){
@@ -60,6 +65,9 @@ function makeRecipeCard(recipe) {
     }else {
         favIcon.textContent = "favorite_border";
     }
+}else{
+    favIcon.textContent = "favorite_border";
+}
 //-----------------------------------------------------------------------------
 
     recipeDiv.appendChild(img);
