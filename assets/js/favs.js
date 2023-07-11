@@ -1,6 +1,6 @@
 var showSavedBtn = document.querySelector("#show-btn");
 var favListEl = document.querySelector("#fav-list");
-var spoonacularKey = "09127c50f6a74092904158506a2c0246";
+var spoonacularKey = "c483c6abaa8c4cd59559ac1eb0ff2720";
 
 
 
