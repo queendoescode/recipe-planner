@@ -145,56 +145,40 @@ searchBtnEl.addEventListener('click', activateSearchBtn);
 
 // ----- Queen Start
 
-// CalorieNinjas API
-var calorieNinjasKey = "t1JgrLUNfPPtvjjAKrN40A==YNBpxRyU6VgWySYh";
-var calorieNinjasUrl = "https://api.calorieninjas.com/v1/nutrition";
+
+var nutritionixKey = "6e3f97fddf2bd417bafb232f06e45323";
+var nutritionixUrl = "https://trackapi.nutritionix.com/v2/natural/nutrients";
+var nutritionixAppId = "06d181a0";
 
 var totalCalories = 0;
 
 function getNutritionPromise(item, caloriesHeading) {
-    // Some recipes use fractions e.g. "1/4", so make sure 
-    // this will be computed in calorie count.
-    var queryText = item.original;
-    var fraction = 1.0;
-    if (item.amount < 1) {
-        fraction = item.amount;
-        queryText = `1 ${item.unit} ${item.originalName}`;
-    }
-    // Some recipes use cup for solid ingredients which produces a wrong calorie figure
-    // but we can convert to ounces (oz). Also handles fractional cups (e.g. "1/4").
-    if (item.unit == "cup" || item.unit == "cups") {
-        fraction = 8 * item.amount;
-        queryText = `1 oz ${item.originalName}`;
-    }
-
-    queryText = queryText.replace(" ml", "ml").replace(" gr.", "g");
-
-    return fetch(`${calorieNinjasUrl}?query=${queryText}`, {
-        method: 'GET',
-        credentials: 'same-origin',
-        redirect: 'follow',
+    return fetch(nutritionixUrl, {
+        method: 'POST', //GET is the default.
+        credentials: 'same-origin', // include, *same-origin, omit
+        redirect: 'follow', // manual, *follow, error
         headers: {
-            "X-Api-Key": calorieNinjasKey
-        }
+            "x-app-id": nutritionixAppId,
+            "x-app-key": nutritionixKey,
+            "x-remote-user-id": "0",
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({query: item.original})
     })
-        .then(function (response) {
-            return response.json();
-        })
-        .then(function (data) {
-            var calories = 0;
-            if (data.items.length > 0) {
-                // Some ingredients are "to taste" or do not have a quantity; skip these in our total.
-                // (e.g. "salt and pepper to taste")
-                if (item.unit !== "servings" && item.unit !== "serving") {
-                    calories = data.items[0].calories * fraction;
-                    totalCalories = totalCalories + calories;
-                }
+    .then(function (response) {
+        return response.json();
+    })
+    .then( data => {
+        var calories = 0;
+        if (data.foods.length === 1) {
+            calories = data.foods[0].nf_calories;
+            totalCalories = totalCalories + calories;
 
-                caloriesHeading.textContent = `${Math.round(totalCalories)} Calories total`;
-            }
-            console.log(`${item.original}  Calories: ${calories}  (${item.unit})`)
-            return calories;
-        });
+            caloriesHeading.textContent = `${Math.round(totalCalories)} Calories total`;
+        }
+        
+        return calories;
+    });
 }
 
 function computeCalories(data) {
