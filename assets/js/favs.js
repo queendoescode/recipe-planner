@@ -1,5 +1,6 @@
 var showSavedBtn = document.querySelector("#show-btn");
 var favListEl = document.querySelector("#fav-list");
+var spoonacularKey = "09127c50f6a74092904158506a2c0246";
 
 
 
@@ -9,12 +10,12 @@ showSavedBtn.addEventListener('click', function () {
     var likedFood = localStorage.getItem('isLiked');
     if (likedFood) {
         var arrayLikedFood = likedFood.split(',');
-        console.log(arrayLikedFood);
+        console.log(typeof arrayLikedFood);
 
         for (var i = 0; i < arrayLikedFood.length; i++) {
             var userInput = arrayLikedFood[i];
             console.log(userInput);
-            fetch(`https://api.spoonacular.com/recipes/${arrayLikedFood[i]}/information?apiKey=4b9fe343ff764f7494d88321c248a6ee`, {
+            fetch(`https://api.spoonacular.com/recipes/${arrayLikedFood[i]}/information?apiKey=${spoonacularKey}`, {
                 method: 'GET',
                 credentials: 'same-origin',
                 redirect: 'follow',

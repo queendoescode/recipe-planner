@@ -2,9 +2,11 @@
 
 // Important - use your own personal keys to avoid hitting rate limits too often
 
-var nutritionixKey = "add your api key here please";
-var nutritionixAppId = "add your api Id here please";
+var nutritionixKey = "bd89972978beea9da43d3840c32eedf9";
+var nutritionixAppId = "f3463952";
 var nutritionixUrl = "https://trackapi.nutritionix.com/v2/natural/nutrients";
+
+var spoonacularKey = "09127c50f6a74092904158506a2c0246";
 
 
 var searchBtnEl = document.querySelector(".search-btn");
@@ -26,6 +28,14 @@ var allLiked = [];
 // and the div that is the "recipe card". 
 // It returns the parent div.
 function makeRecipeCard(recipe) {
+
+
+        //------------------------------------------------------------------
+        var likedFood = localStorage.getItem('isLiked');
+        var arrayLikedFood = likedFood.split(',');
+        //------------------------------------------------------------------ 
+
+
     console.log(recipe)
     var recipeDiv = document.createElement("div");
     recipeDiv.setAttribute("class", "recipe-card image-container");
@@ -36,7 +46,22 @@ function makeRecipeCard(recipe) {
     var favIcon = document.createElement('i');
     favIcon.setAttribute("class", "material-icons favorite-icon");
     favIcon.setAttribute("data-id", recipe.id);
-    favIcon.textContent = "favorite_border";
+
+// to remain bold heart for favorite foods after refreshing the page
+//----------------------------------------------------------------------------
+    var num = recipe.id;
+    var array = [];
+    for (var i=0; i<arrayLikedFood.length; i++){
+        array.push(parseInt(arrayLikedFood[i]));
+    }
+
+    if (array.includes(num)) {
+        favIcon.textContent = "favorite";
+    }else {
+        favIcon.textContent = "favorite_border";
+    }
+//-----------------------------------------------------------------------------
+
     recipeDiv.appendChild(img);
     recipeDiv.appendChild(favIcon);
     var tag = document.createElement('a');
@@ -71,7 +96,7 @@ function activateSearchBtn() {
     if (userInput) {
         console.log(userInput);
         var baseUrl = 'https://api.spoonacular.com/recipes/complexSearch';
-        var finalUrl = `${baseUrl}?query=${encodeURIComponent(userInput)}&apiKey=4b9fe343ff764f7494d88321c248a6ee`;
+        var finalUrl = `${baseUrl}?query=${encodeURIComponent(userInput)}&apiKey=${spoonacularKey}`;
         fetch(finalUrl, {
             method: 'GET',
             credentials: 'same-origin',
@@ -116,7 +141,7 @@ resultEl.addEventListener("click", function (event) {
     }else {
         return;
     }
-    fetch(`https://api.spoonacular.com/recipes/${inputId}/information?apiKey=4b9fe343ff764f7494d88321c248a6ee`, {
+    fetch(`https://api.spoonacular.com/recipes/${inputId}/information?apiKey=${spoonacularKey}`, {
         method: 'GET',
         credentials: 'same-origin',
         redirect: 'follow',
@@ -130,7 +155,7 @@ resultEl.addEventListener("click", function (event) {
 
             computeCalories(data);
         });
-    fetch(`https://api.spoonacular.com/recipes/${inputId}/analyzedInstructions?apiKey=4b9fe343ff764f7494d88321c248a6ee`, {
+    fetch(`https://api.spoonacular.com/recipes/${inputId}/analyzedInstructions?apiKey=${spoonacularKey}`, {
         method: 'GET',
         credentials: 'same-origin',
         redirect: 'follow',
@@ -152,8 +177,9 @@ resultEl.addEventListener("click", function (event) {
 
 searchBtnEl.addEventListener('click', activateSearchBtn);
 
-// ----- Queen Start
 
+
+// calories count part
 var totalCalories = 0;
 
 function getNutritionPromise(item, caloriesHeading) {
@@ -215,7 +241,6 @@ function computeCalories(data) {
 }
 
 
-//--------Golnaz added these--------
 
 
 //even listener for navbar dropdown
@@ -223,10 +248,6 @@ document.addEventListener('DOMContentLoaded', function () {
     var elems = document.querySelectorAll('.dropdown-trigger');
     var instances = M.Dropdown.init(elems);
 });
-// document.addEventListener('DOMContentLoaded', function () {
-//     var elems = document.querySelectorAll('.collapsible');
-//     var instances = M.Collapsible.init(elems);
-// });
 
 
 //evenlistener for each of five different type of breakfast in navbar
@@ -251,7 +272,7 @@ breakfastEl.addEventListener("click", function (event) {
         console.log(inputId);
     }
 
-    fetch(`https://api.spoonacular.com/recipes/complexSearch?cuisine=${inputId}&type=breakfast&number=10&apiKey=4b9fe343ff764f7494d88321c248a6ee`, {
+    fetch(`https://api.spoonacular.com/recipes/complexSearch?cuisine=${inputId}&type=breakfast&number=10&apiKey=${spoonacularKey}`, {
         method: 'GET',
         credentials: 'same-origin',
         redirect: 'follow',
@@ -292,7 +313,7 @@ mainCourseEl.addEventListener("click", function (event) {
         console.log(inputId);
     }
 
-    fetch(`https://api.spoonacular.com/recipes/complexSearch?cuisine=${inputId}&type=main course&number=10&apiKey=4b9fe343ff764f7494d88321c248a6ee`, {
+    fetch(`https://api.spoonacular.com/recipes/complexSearch?cuisine=${inputId}&type=main course&number=10&apiKey=${spoonacularKey}`, {
         method: 'GET',
         credentials: 'same-origin',
         redirect: 'follow',
@@ -335,7 +356,7 @@ sideDishEl.addEventListener("click", function (event) {
         console.log(inputId);
     }
 
-    fetch(`https://api.spoonacular.com/recipes/complexSearch?cuisine=${inputId}&type=side dish&number=10&apiKey=4b9fe343ff764f7494d88321c248a6ee`, {
+    fetch(`https://api.spoonacular.com/recipes/complexSearch?cuisine=${inputId}&type=side dish&number=10&apiKey=${spoonacularKey}`, {
         method: 'GET',
         credentials: 'same-origin',
         redirect: 'follow',
@@ -378,7 +399,7 @@ dessertEl.addEventListener("click", function (event) {
         console.log(inputId);
     }
 
-    fetch(`https://api.spoonacular.com/recipes/complexSearch?cuisine=${inputId}&type=dessert&number=10&apiKey=4b9fe343ff764f7494d88321c248a6ee`, {
+    fetch(`https://api.spoonacular.com/recipes/complexSearch?cuisine=${inputId}&type=dessert&number=10&apiKey=${spoonacularKey}`, {
         method: 'GET',
         credentials: 'same-origin',
         redirect: 'follow',
@@ -419,13 +440,13 @@ resultEl.addEventListener('click', function (event) {
         return;
     }
     localStorage.setItem('isLiked', inputId);
-    allLikedRender();
+    allLikedRender(element);
 
 });
 
 
 
-function allLikedRender() {
+function allLikedRender(element) {
 
     var likedFood = localStorage.getItem('isLiked');
     var arrayLikedFood = likedFood.split(',');
@@ -441,6 +462,28 @@ function allLikedRender() {
         allLiked.push(differ);
         console.log(allLiked);
     }
+
+
+    //-------------------------------------------------------------------------------------- 
+    //check if it was liked, now it should be disliked and remove from localstorage
+    if (check) {
+        var disLikeIndex = allLiked.indexOf(differ);
+        allLiked.splice(disLikeIndex,1);
+        console.log(allLiked);
+        disLike();
+    }
+
+    function disLike() {
+        if (element.matches("i") === true) {
+            var inputId = element.getAttribute("data-id");
+            element.textContent = "favorite_border";
+            console.log(inputId);
+        } else {
+            return;
+        }
+    } 
+    //--------------------------------------------------------------------------------------
+    
 
     //update local storage
     var stringAllLiked = allLiked.join(',');
