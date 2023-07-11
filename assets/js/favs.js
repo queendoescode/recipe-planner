@@ -7,6 +7,17 @@ var spoonacularKey = "c483c6abaa8c4cd59559ac1eb0ff2720";
 //when user click on show button, it shows all favorite foods on screen
 showSavedBtn.addEventListener('click', function () {
 
+    //------------------------------------------------
+
+var childNodes = favListEl.childNodes;
+for (var i=childNodes.length - 1; i >= 0; i--){
+    var childNode = childNodes[i]; 
+    favListEl.removeChild(childNode);
+
+}
+
+//------------------------------------------------
+
     var likedFood = localStorage.getItem('isLiked');
     if (likedFood) {
         var arrayLikedFood = likedFood.split(',');
