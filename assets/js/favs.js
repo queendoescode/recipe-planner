@@ -14,7 +14,7 @@ showSavedBtn.addEventListener('click', function () {
         for (var i = 0; i < arrayLikedFood.length; i++) {
             var userInput = arrayLikedFood[i];
             console.log(userInput);
-            fetch(`https://api.spoonacular.com/recipes/${arrayLikedFood[i]}/information?apiKey=96dedef6d4244eee817b8f5cc4b3179f`, {
+            fetch(`https://api.spoonacular.com/recipes/${arrayLikedFood[i]}/information?apiKey=4b9fe343ff764f7494d88321c248a6ee`, {
                 method: 'GET',
                 credentials: 'same-origin',
                 redirect: 'follow',

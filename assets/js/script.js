@@ -2,8 +2,8 @@
 
 // Important - use your own personal keys to avoid hitting rate limits too often
 
-var nutritionixKey = "your personal key here";
-var nutritionixAppId = "your personal app id here";
+var nutritionixKey = "add your api key here please";
+var nutritionixAppId = "add your api Id here please";
 var nutritionixUrl = "https://trackapi.nutritionix.com/v2/natural/nutrients";
 
 
@@ -71,7 +71,7 @@ function activateSearchBtn() {
     if (userInput) {
         console.log(userInput);
         var baseUrl = 'https://api.spoonacular.com/recipes/complexSearch';
-        var finalUrl = `${baseUrl}?query=${encodeURIComponent(userInput)}&apiKey=96dedef6d4244eee817b8f5cc4b3179f`;
+        var finalUrl = `${baseUrl}?query=${encodeURIComponent(userInput)}&apiKey=4b9fe343ff764f7494d88321c248a6ee`;
         fetch(finalUrl, {
             method: 'GET',
             credentials: 'same-origin',
@@ -116,7 +116,7 @@ resultEl.addEventListener("click", function (event) {
     }else {
         return;
     }
-    fetch(`https://api.spoonacular.com/recipes/${inputId}/information?apiKey=96dedef6d4244eee817b8f5cc4b3179f`, {
+    fetch(`https://api.spoonacular.com/recipes/${inputId}/information?apiKey=4b9fe343ff764f7494d88321c248a6ee`, {
         method: 'GET',
         credentials: 'same-origin',
         redirect: 'follow',
@@ -130,7 +130,7 @@ resultEl.addEventListener("click", function (event) {
 
             computeCalories(data);
         });
-    fetch(`https://api.spoonacular.com/recipes/${inputId}/analyzedInstructions?apiKey=96dedef6d4244eee817b8f5cc4b3179f`, {
+    fetch(`https://api.spoonacular.com/recipes/${inputId}/analyzedInstructions?apiKey=4b9fe343ff764f7494d88321c248a6ee`, {
         method: 'GET',
         credentials: 'same-origin',
         redirect: 'follow',
@@ -251,7 +251,7 @@ breakfastEl.addEventListener("click", function (event) {
         console.log(inputId);
     }
 
-    fetch(`https://api.spoonacular.com/recipes/complexSearch?cuisine=${inputId}&type=breakfast&number=10&apiKey=96dedef6d4244eee817b8f5cc4b3179f`, {
+    fetch(`https://api.spoonacular.com/recipes/complexSearch?cuisine=${inputId}&type=breakfast&number=10&apiKey=4b9fe343ff764f7494d88321c248a6ee`, {
         method: 'GET',
         credentials: 'same-origin',
         redirect: 'follow',
@@ -292,7 +292,7 @@ mainCourseEl.addEventListener("click", function (event) {
         console.log(inputId);
     }
 
-    fetch(`https://api.spoonacular.com/recipes/complexSearch?cuisine=${inputId}&type=main course&number=10&apiKey=96dedef6d4244eee817b8f5cc4b3179f`, {
+    fetch(`https://api.spoonacular.com/recipes/complexSearch?cuisine=${inputId}&type=main course&number=10&apiKey=4b9fe343ff764f7494d88321c248a6ee`, {
         method: 'GET',
         credentials: 'same-origin',
         redirect: 'follow',
@@ -335,7 +335,7 @@ sideDishEl.addEventListener("click", function (event) {
         console.log(inputId);
     }
 
-    fetch(`https://api.spoonacular.com/recipes/complexSearch?cuisine=${inputId}&type=side dish&number=10&apiKey=96dedef6d4244eee817b8f5cc4b3179f`, {
+    fetch(`https://api.spoonacular.com/recipes/complexSearch?cuisine=${inputId}&type=side dish&number=10&apiKey=4b9fe343ff764f7494d88321c248a6ee`, {
         method: 'GET',
         credentials: 'same-origin',
         redirect: 'follow',
@@ -378,7 +378,7 @@ dessertEl.addEventListener("click", function (event) {
         console.log(inputId);
     }
 
-    fetch(`https://api.spoonacular.com/recipes/complexSearch?cuisine=${inputId}&type=dessert&number=10&apiKey=96dedef6d4244eee817b8f5cc4b3179f`, {
+    fetch(`https://api.spoonacular.com/recipes/complexSearch?cuisine=${inputId}&type=dessert&number=10&apiKey=4b9fe343ff764f7494d88321c248a6ee`, {
         method: 'GET',
         credentials: 'same-origin',
         redirect: 'follow',
@@ -448,6 +448,13 @@ function allLikedRender() {
 }
 
 //when user click on favorite food button, it shows the other html page
-favFoodsEl.addEventListener("click", function() {
-  window.location.href = "favs.html";
+favFoodsEl.addEventListener("click", function(event) {
+
+    var element = event.target;
+    if (element.matches("i") === true) {
+        window.location.href = "favs.html";
+
+    } else {
+        return;
+    }
 });
