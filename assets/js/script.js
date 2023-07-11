@@ -1,4 +1,3 @@
-
 var searchBtnEl = document.querySelector(".search-btn");
 var userInputEl = document.querySelector("#user-input");
 var resultEl = document.querySelector("#result");
@@ -17,14 +16,11 @@ var allLiked = [];
 // This creates the image and heading elements for a recipe
 // and the div that is the "recipe card". 
 // It returns the parent div.
-
 function makeRecipeCard(recipe) {
     console.log(recipe)
     var recipeDiv = document.createElement("div");
     recipeDiv.setAttribute("class", "recipe-card image-container");
     recipeDiv.setAttribute("id", "custom-container");
-
-
     var img = document.createElement('img');
     var source = recipe.image;
     img.setAttribute("src", source);
@@ -34,7 +30,6 @@ function makeRecipeCard(recipe) {
     favIcon.textContent = "favorite_border";
     recipeDiv.appendChild(img);
     recipeDiv.appendChild(favIcon);
-
     var tag = document.createElement('a');
     tag.setAttribute("href", "#");
     tag.setAttribute("data-id", recipe.id);
@@ -45,8 +40,10 @@ function makeRecipeCard(recipe) {
     return recipeDiv;
 }
 
+//this function takes user inpute and fetch up tp 10 kind of food which user wants to search
 function activateSearchBtn() {
-
+    
+    //first delete previous serch result
     var childNodes = descriptionEl.childNodes;
     for (var i = childNodes.length - 1; i >= 0; i--) {
         var childNode = childNodes[i];
@@ -92,6 +89,8 @@ function activateSearchBtn() {
 
 }
 
+//this function fetch ingredients and instruction of the food which user selects 
+//also calls computeCalories function to calculate calories of the food 
 resultEl.addEventListener("click", function (event) {
     var childNodes = descriptionEl.childNodes;
 
@@ -222,17 +221,19 @@ function computeCalories(data) {
 //--------Golnaz added these--------
 
 
+//even listener for navbar dropdown
 document.addEventListener('DOMContentLoaded', function () {
     var elems = document.querySelectorAll('.dropdown-trigger');
     var instances = M.Dropdown.init(elems);
 });
-document.addEventListener('DOMContentLoaded', function () {
-    var elems = document.querySelectorAll('.collapsible');
-    var instances = M.Collapsible.init(elems);
-});
+// document.addEventListener('DOMContentLoaded', function () {
+//     var elems = document.querySelectorAll('.collapsible');
+//     var instances = M.Collapsible.init(elems);
+// });
 
 
-
+//evenlistener for each of five different type of breakfast in navbar
+//when user select each of them this function fetch 10 different food of that and shows on screen
 breakfastEl.addEventListener("click", function (event) {
 
     var childNodes = descriptionEl.childNodes;
@@ -272,7 +273,8 @@ breakfastEl.addEventListener("click", function (event) {
 });
 
 
-
+//evenlistener for each of five different type of main course in navbar
+//when user select each of them this function fetch 10 different food of that and shows on screen
 mainCourseEl.addEventListener("click", function (event) {
 
     var childNodes = descriptionEl.childNodes;
@@ -314,6 +316,8 @@ mainCourseEl.addEventListener("click", function (event) {
 });
 
 
+//evenlistener for each of five different type of side dish in navbar
+//when user select each of them this function fetch 10 different food of that and shows on screen
 sideDishEl.addEventListener("click", function (event) {
 
     var childNodes = descriptionEl.childNodes;
@@ -355,6 +359,8 @@ sideDishEl.addEventListener("click", function (event) {
 });
 
 
+//evenlistener for each of five different type of desserts in navbar
+//when user select each of them this function fetch 10 different food of that and shows on screen
 dessertEl.addEventListener("click", function (event) {
 
     var childNodes = descriptionEl.childNodes;
@@ -396,6 +402,8 @@ dessertEl.addEventListener("click", function (event) {
 });
 
 
+//when user click on heart of each food, it saves that isliked food in local storage
+// and change the empty heart to full heart as an isliked
 resultEl.addEventListener('click', function (event) {
 
     var isLikedFood = localStorage.getItem("isLiked");
@@ -442,7 +450,7 @@ function allLikedRender() {
     localStorage.setItem("isLiked", stringAllLiked);
 }
 
-
+//when user click on favorite food button, it shows the other html page
 favFoodsEl.addEventListener("click", function() {
   window.location.href = "favs.html";
 });
