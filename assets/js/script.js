@@ -6,7 +6,7 @@ var nutritionixKey = "bd89972978beea9da43d3840c32eedf9";
 var nutritionixAppId = "f3463952";
 var nutritionixUrl = "https://trackapi.nutritionix.com/v2/natural/nutrients";
 
-var spoonacularKey = "c483c6abaa8c4cd59559ac1eb0ff2720";
+var spoonacularKey = "09127c50f6a74092904158506a2c0246";
 
 
 var searchBtnEl = document.querySelector(".search-btn");
@@ -15,38 +15,17 @@ var resultEl = document.querySelector("#result");
 var descriptionEl = document.querySelector("#description");
 var britishBreakfastEl = document.querySelector("#british-brkfst");
 var breakfastEl = document.querySelector("#dropdown1");
+var sideNavBreakfastEl = document.querySelector("#dropdown-mobile1");
 var mainCourseEl = document.querySelector("#dropdown2");
+var sideNavMainCourseEl = document.querySelector("#dropdown-mobile2");
 var sideDishEl = document.querySelector("#dropdown3");
+var sideNavSideDishEl = document.querySelector("#dropdown-mobile3");
 var dessertEl = document.querySelector("#dropdown4");
+var sideNavDessertEl = document.querySelector("#dropdown-mobile4")
 var favFoodsEl = document.querySelector("#fav-food");
 var heroImageEl = document.querySelector("#hero-image");
 
 var allLiked = [];
-
-//------------------------------------ Trying to make the navbar responsive
-
-document.addEventListener('DOMContentLoaded', function() {
-    // Initialize regular navbar dropdown triggers
-    var dropdownTriggers = document.querySelectorAll('.nav-wrapper .right .dropdown-trigger');
-    M.Dropdown.init(dropdownTriggers);
-  
-    // Initialize mobile navbar dropdown triggers
-    var mobileDropdownTriggers = document.querySelectorAll('.sidenav .dropdown-trigger');
-    M.Dropdown.init(mobileDropdownTriggers);
-  
-    // Initialize sidenav
-    var sideNav = document.querySelectorAll('.sidenav');
-    var options = {
-      edge: 'left',
-      draggable: true
-    };
-    M.Sidenav.init(sideNav, options);
-  });
-  
-
-//------------------------------------
-  
-
 
 // This creates the image and heading elements for a recipe
 // and the div that is the "recipe card". 
@@ -272,15 +251,11 @@ function computeCalories(data) {
 
 }
 
-
-
-
 //even listener for navbar dropdown
 document.addEventListener('DOMContentLoaded', function () {
     var elems = document.querySelectorAll('.dropdown-trigger');
     var instances = M.Dropdown.init(elems);
 });
-
 
 //evenlistener for each of five different type of breakfast in navbar
 //when user select each of them this function fetch 10 different food of that and shows on screen
@@ -449,6 +424,181 @@ dessertEl.addEventListener("click", function (event) {
             }
         });
 
+});
+
+document.addEventListener('DOMContentLoaded', function() {
+  
+    // Initialize mobile navbar dropdown triggers
+    var mobileDropdownTriggers = document.querySelectorAll('.sidenav .dropdown-trigger');
+    M.Dropdown.init(mobileDropdownTriggers);
+  
+    // Initialize sidenav
+    var sideNav = document.querySelectorAll('.sidenav');
+    var options = {
+      edge: 'left',
+      draggable: true
+    };
+    M.Sidenav.init(sideNav, options);
+  });
+  
+  sideNavBreakfastEl.addEventListener("click", function (event) {
+
+    var childNodes = descriptionEl.childNodes;
+    for (var i = childNodes.length - 1; i >= 0; i--) {
+        var childNode = childNodes[i];
+        descriptionEl.removeChild(childNode);
+    }
+    var childNodes = resultEl.childNodes;
+    for (var i = childNodes.length - 1; i >= 0; i--) {
+        var childNode = childNodes[i];
+        resultEl.removeChild(childNode);
+    }
+
+
+    var element = event.target;
+    if (element.matches("a") === true) {
+        var inputId = element.getAttribute("id");
+        console.log(inputId);
+    }
+
+    fetch(`https://api.spoonacular.com/recipes/complexSearch?cuisine=${inputId}&type=breakfast&number=10&apiKey=${spoonacularKey}`, {
+        method: 'GET',
+        credentials: 'same-origin',
+        redirect: 'follow',
+    })
+        .then(function (response) {
+            return response.json();
+        })
+        .then(data => {
+            heroImageEl.remove();
+            for (var i = 0; i < data.results.length; i++) {
+                var card = makeRecipeCard(data.results[i]);
+                resultEl.appendChild(card);
+            }
+        });
+
+});
+
+sideNavMainCourseEl.addEventListener("click", function (event) {
+
+    var childNodes = descriptionEl.childNodes;
+    for (var i = childNodes.length - 1; i >= 0; i--) {
+        var childNode = childNodes[i];
+        descriptionEl.removeChild(childNode);
+    }
+    var childNodes = resultEl.childNodes;
+    for (var i = childNodes.length - 1; i >= 0; i--) {
+        var childNode = childNodes[i];
+        resultEl.removeChild(childNode);
+    }
+
+
+    var element = event.target;
+    if (element.matches("a") === true) {
+        var inputId = element.getAttribute("id");
+        console.log(inputId);
+    }
+
+    fetch(`https://api.spoonacular.com/recipes/complexSearch?cuisine=${inputId}&type=main course&number=10&apiKey=${spoonacularKey}`, {
+        method: 'GET',
+        credentials: 'same-origin',
+        redirect: 'follow',
+    })
+        .then(function (response) {
+            return response.json();
+        })
+        .then(function (data) {
+            console.log(data);
+            console.log(data.results.length);
+            heroImageEl.remove();
+            for (var i = 0; i < data.results.length; i++) {
+                var card = makeRecipeCard(data.results[i]);
+                resultEl.appendChild(card);
+            }
+        });
+
+});
+
+sideNavSideDishEl.addEventListener("click", function (event) {
+
+    var childNodes = descriptionEl.childNodes;
+    for (var i = childNodes.length - 1; i >= 0; i--) {
+        var childNode = childNodes[i];
+        descriptionEl.removeChild(childNode);
+    }
+    var childNodes = resultEl.childNodes;
+    for (var i = childNodes.length - 1; i >= 0; i--) {
+        var childNode = childNodes[i];
+        resultEl.removeChild(childNode);
+    }
+
+
+    var element = event.target;
+    if (element.matches("a") === true) {
+        var inputId = element.getAttribute("id");
+        console.log(inputId);
+    }
+
+    fetch(`https://api.spoonacular.com/recipes/complexSearch?cuisine=${inputId}&type=side dish&number=10&apiKey=${spoonacularKey}`, {
+        method: 'GET',
+        credentials: 'same-origin',
+        redirect: 'follow',
+    })
+        .then(function (response) {
+            return response.json();
+        })
+        .then(function (data) {
+            console.log(data);
+            console.log(data.results.length);
+            heroImageEl.remove();
+            for (var i = 0; i < data.results.length; i++) {
+                var card = makeRecipeCard(data.results[i]);
+                resultEl.appendChild(card);
+            }
+        });
+
+});
+
+sideNavDessertEl.addEventListener("click", function (event) {
+
+    var childNodes = descriptionEl.childNodes;
+    for (var i = childNodes.length - 1; i >= 0; i--) {
+        var childNode = childNodes[i];
+        descriptionEl.removeChild(childNode);
+    }
+    var childNodes = resultEl.childNodes;
+    for (var i = childNodes.length - 1; i >= 0; i--) {
+        var childNode = childNodes[i];
+        resultEl.removeChild(childNode);
+    }
+
+
+    var element = event.target;
+    if (element.matches("a") === true) {
+        var inputId = element.getAttribute("id");
+        console.log(inputId);
+    }
+
+    fetch(`https://api.spoonacular.com/recipes/complexSearch?cuisine=${inputId}&type=dessert&number=10&apiKey=${spoonacularKey}`, {
+        method: 'GET',
+        credentials: 'same-origin',
+        redirect: 'follow',
+    })
+        .then(function (response) {
+            return response.json();
+        })
+        .then(function (data) {
+            console.log(data);
+            console.log(data.results.length);
+            heroImageEl.remove();
+            for (var i = 0; i < data.results.length; i++) {
+                var card = makeRecipeCard(data.results[i]);
+                resultEl.appendChild(card);
+            }
+        });
+        var sidenav = document.querySelector('.sidenav');
+        var sidenavInstance = M.Sidenav.getInstance(sidenav);
+        sidenavInstance.close();
 });
 
 
