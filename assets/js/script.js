@@ -25,14 +25,24 @@ var allLiked = [];
 
 //------------------------------------ Trying to make the navbar responsive
 
-// document.addEventListener('DOMContentLoaded', function() {
-//     var sideNav = document.querySelectorAll('.sidenav');
-//     var options = {
-//       edge: 'left',
-//       draggable: true
-//     };
-//     M.Sidenav.init(sideNav, options);
-//   });
+document.addEventListener('DOMContentLoaded', function() {
+    // Initialize regular navbar dropdown triggers
+    var dropdownTriggers = document.querySelectorAll('.nav-wrapper .right .dropdown-trigger');
+    M.Dropdown.init(dropdownTriggers);
+  
+    // Initialize mobile navbar dropdown triggers
+    var mobileDropdownTriggers = document.querySelectorAll('.sidenav .dropdown-trigger');
+    M.Dropdown.init(mobileDropdownTriggers);
+  
+    // Initialize sidenav
+    var sideNav = document.querySelectorAll('.sidenav');
+    var options = {
+      edge: 'left',
+      draggable: true
+    };
+    M.Sidenav.init(sideNav, options);
+  });
+  
 
 //------------------------------------
   
