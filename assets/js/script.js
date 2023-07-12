@@ -25,14 +25,14 @@ var allLiked = [];
 
 //------------------------------------ Trying to make the navbar responsive
 
-document.addEventListener('DOMContentLoaded', function() {
-    var sideNav = document.querySelectorAll('.sidenav');
-    var options = {
-      edge: 'left',
-      draggable: true
-    };
-    M.Sidenav.init(sideNav, options);
-  });
+// document.addEventListener('DOMContentLoaded', function() {
+//     var sideNav = document.querySelectorAll('.sidenav');
+//     var options = {
+//       edge: 'left',
+//       draggable: true
+//     };
+//     M.Sidenav.init(sideNav, options);
+//   });
 
 //------------------------------------
   
