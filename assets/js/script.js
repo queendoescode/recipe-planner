@@ -23,6 +23,20 @@ var heroImageEl = document.querySelector("#hero-image");
 
 var allLiked = [];
 
+//------------------------------------ Trying to make the navbar responsive
+
+document.addEventListener('DOMContentLoaded', function() {
+    var sideNav = document.querySelectorAll('.sidenav');
+    var options = {
+      edge: 'left',
+      draggable: true
+    };
+    M.Sidenav.init(sideNav, options);
+  });
+
+//------------------------------------
+  
+
 
 // This creates the image and heading elements for a recipe
 // and the div that is the "recipe card". 
