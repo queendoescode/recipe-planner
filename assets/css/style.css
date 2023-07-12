@@ -61,19 +61,19 @@ img {
     margin-top: 25px;
 }
 
-/* #fav-list {
-    margin-left: 25px;
-    margin-right: 25px;
-    font-size: larger;
-    font-weight: 600;
-    border: 10px solid pink;
-    border-radius: 20px;
-} */
 
 #description {
     margin: 40px;
     text-align: justify;
 }
+
+
+/*-----------------------------------*/
+#instruction {
+    margin: 40px;
+    text-align: justify;
+}
+/*-----------------------------------*/
 
 #hero-image {
     position: relative;

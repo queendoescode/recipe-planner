@@ -99,7 +99,7 @@ if (likedFood) {
 //this function takes user inpute and fetch up tp 10 kind of food which user wants to search
 function activateSearchBtn() {
     
-    //first delete previous serch result
+    //first delete previous search result
     var childNodes = descriptionEl.childNodes;
     for (var i = childNodes.length - 1; i >= 0; i--) {
         var childNode = childNodes[i];
