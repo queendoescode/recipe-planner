@@ -1,7 +1,7 @@
 var showSavedBtn = document.querySelector("#show-btn");
 var favListEl = document.querySelector("#fav-list");
 var instractionEl = document.querySelector("#instruction")
-var spoonacularKey = "4b9fe343ff764f7494d88321c248a6ee";
+var spoonacularKey = "use your personal key";
 
 
 
