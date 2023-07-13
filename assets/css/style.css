@@ -2,6 +2,11 @@
     margin-top: 5%;
 }
 
+.custom-font {
+    font-family: 'Fasthand', cursive;
+}
+
+
 .block {
     display: block;
 }
@@ -68,12 +73,12 @@ img {
 }
 
 
-/*-----------------------------------*/
+
 #instruction {
     margin: 40px;
     text-align: justify;
 }
-/*-----------------------------------*/
+
 
 #hero-image {
     position: relative;
@@ -85,7 +90,6 @@ img {
     top: 20px;
     color: white;
     font-family: 'Fasthand', cursive;
-
 }
 
 #hero-image h1 {

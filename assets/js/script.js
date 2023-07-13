@@ -2,11 +2,11 @@
 
 // Important - use your own personal keys to avoid hitting rate limits too often
 
-var nutritionixKey = "bd89972978beea9da43d3840c32eedf9";
-var nutritionixAppId = "f3463952";
+var nutritionixKey = "14be12f9f530772264d942435d5a0e63";
+var nutritionixAppId = "768112d4";
 var nutritionixUrl = "https://trackapi.nutritionix.com/v2/natural/nutrients";
 
-var spoonacularKey = "09127c50f6a74092904158506a2c0246";
+var spoonacularKey = "4b9fe343ff764f7494d88321c248a6ee";
 
 
 var searchBtnEl = document.querySelector(".search-btn");
@@ -33,12 +33,6 @@ var allLiked = [];
 function makeRecipeCard(recipe) {
 
 
-        //------------------------------------------------------------------
-
-        
-        //------------------------------------------------------------------ 
-
-
     console.log(recipe)
     var recipeDiv = document.createElement("div");
     recipeDiv.setAttribute("class", "recipe-card image-container");
@@ -51,7 +45,6 @@ function makeRecipeCard(recipe) {
     favIcon.setAttribute("data-id", recipe.id);
 
 // to remain bold heart for favorite foods after refreshing the page
-//----------------------------------------------------------------------------
 
 var likedFood = localStorage.getItem('isLiked');
 if (likedFood) {
@@ -71,7 +64,6 @@ if (likedFood) {
 }else{
     favIcon.textContent = "favorite_border";
 }
-//-----------------------------------------------------------------------------
 
     recipeDiv.appendChild(img);
     recipeDiv.appendChild(favIcon);
@@ -125,13 +117,9 @@ function activateSearchBtn() {
                     resultEl.appendChild(card);
                 }
             });
-    
-
     }else {
         return;
     }
-
-
 }
 
 //this function fetch ingredients and instruction of the food which user selects 
@@ -186,8 +174,8 @@ resultEl.addEventListener("click", function (event) {
 
 });
 
-searchBtnEl.addEventListener('click', activateSearchBtn);
 
+searchBtnEl.addEventListener('click', activateSearchBtn);
 
 
 // calories count part
@@ -247,8 +235,6 @@ function computeCalories(data) {
             ingredient, 
             caloriesHeading);
     }
-
-
 }
 
 //even listener for navbar dropdown
@@ -426,6 +412,8 @@ dessertEl.addEventListener("click", function (event) {
 
 });
 
+
+// related to side navbar for smaller screen
 document.addEventListener('DOMContentLoaded', function() {
   
     // Initialize mobile navbar dropdown triggers
@@ -645,8 +633,6 @@ function allLikedRender(element) {
         console.log(allLiked);
     }
 
-
-    //-------------------------------------------------------------------------------------- 
     //check if it was liked, now it should be disliked and remove from localstorage
     if (check) {
         var disLikeIndex = allLiked.indexOf(differ);
@@ -664,7 +650,6 @@ function allLikedRender(element) {
             return;
         }
     } 
-    //--------------------------------------------------------------------------------------
     
 
     //update local storage
