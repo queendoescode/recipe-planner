@@ -17,6 +17,11 @@
   width: 20%;
 }
 
+.recipe-card a {
+    font-size: 30px;
+    font-family: 'Oswald', sans-serif;
+}
+
 #result {
 
     display: flex;
