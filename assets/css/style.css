@@ -17,6 +17,19 @@
   width: 20%;
 }
 
+.recipe-card a {
+    font-size: 30px;
+    font-family: 'Oswald', sans-serif;
+    display: inline-block;
+    border-radius: 10px;
+    color: rgb(20, 58, 145);
+    padding: 0 12px;
+}
+
+.recipe-card a:hover {
+    background-color: pink;
+}
+
 #result {
 
     display: flex;
