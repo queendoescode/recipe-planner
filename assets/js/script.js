@@ -2,11 +2,11 @@
 
 // Important - use your own personal keys to avoid hitting rate limits too often
 
-var nutritionixKey = "use your personal key";
-var nutritionixAppId = "use your personal app id";
+var nutritionixKey = "use your own personal key please";
+var nutritionixAppId = "use your own personal ID please";
 var nutritionixUrl = "https://trackapi.nutritionix.com/v2/natural/nutrients";
 
-var spoonacularKey = "use your personal key";
+var spoonacularKey = "use your own personal key please";
 
 
 var searchBtnEl = document.querySelector(".search-btn");
