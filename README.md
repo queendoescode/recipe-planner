@@ -28,12 +28,22 @@ THEN I am presented with a list of all my selected foods
 
 ## Mock Up 
 
+![image](https://github.com/Golnaz8/Recipe-Planner/assets/133593128/0dd80c3c-878c-44a3-8b77-128df2a67829)
+
 ## GitHub Page Link 
 
-## Third Party Resources
+https://golnaz8.github.io/Recipe-Planner/
+
+## Third party Resources
+
+Spoonacular API and Nutritionix API
+
+Materializecss UI
 
 ## Royalty Free images
 
 * https://pixabay.com/photos/spaghetti-tomatoes-basil-1932466/
 
-## License 
+
+
+© 2023 edX Boot Camps LLC. Confidential and Proprietary. All Rights Reserved.

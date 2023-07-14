@@ -1,7 +1,7 @@
 var showSavedBtn = document.querySelector("#show-btn");
 var favListEl = document.querySelector("#fav-list");
 var instractionEl = document.querySelector("#instruction")
-var spoonacularKey = "use your personal key";
+var spoonacularKey = "use your own personal key please";
 
 
 
@@ -61,7 +61,6 @@ showSavedBtn.addEventListener('click', function () {
 });
 
 
-//--------------------------------------------------------------------------------------------------
 
 favListEl.addEventListener("click", function (event) {
 
@@ -117,4 +116,3 @@ favListEl.addEventListener("click", function (event) {
 
 });
 
-//---------------------------------------------------------------------------------------------------
